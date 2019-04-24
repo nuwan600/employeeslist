@@ -1,0 +1,63 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+    <h3>Employee Book</h3>
+
+    <p>
+      <label>Emp ID</label>
+      <input type="text" ng-model="main.person.empid " />
+      <label>First Name</label>
+      <input type="text" ng-model="main.person.firstname " />
+      <label>Last Name</label>
+      <input type="text " ng-model="main.person.lastname" />
+      <label>Email</label>
+      <input type="text " ng-model="main.person.email" />
+       <label>Mobile</label>
+      <input type="text " ng-model="main.person.mobile" />
+      <label>Department</label>
+      <input type="text" ng-model="main.person.department " />
+    </p>
+
+    <div class="row">
+      <div class="col-md-7">
+        <button class="btn btn-primary" ng-click="main.addClickHandler()">Save</button>
+        <button class="btn btn-default" ng-click="main.resetClickHandler()">Clear Form</button>
+      </div>
+      <div class="col-md-5">
+        <label>Search:</label>
+        <input type="text" ng-model="main.search" />
+      </div>
+    </div>
+    
+    <p></p>
+
+    <div class="row" ng-show="main.addresses">
+      <table class="table table-bordered table-striped table-condensed">
+        <thead>
+          <tr>
+            <th>Emp ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Department</th>
+            <th>actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in main.addresses |filter:main.search ">
+            <td ng-bind="item.empid "></td>
+            <td ng-bind="item.firstname "></td>
+            <td ng-bind="item.lastname "></td>
+            <td ng-bind="item.email "></td>
+            <td ng-bind="item.mobile "></td>
+            <td ng-bind="item.department "></td>
+            <td>
+              <button class="btn btn-primary" ng-click="main.editClickHandler(item)">Edit</button>
+              <button class="btn btn-danger" ng-click="main.removeClickHandler(item)">Remove</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<router-outlet></router-outlet>
